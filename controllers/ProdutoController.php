@@ -36,6 +36,19 @@
             return $response;
         }
 
+        public function atualizar(Request $request, Response $response, array $args){
+            $id = $args['id'];
+            $var = $request->getParsedBody();
+            $produto = new Produto($id, $var['nome'], $var['preco']);
+    
+            $dao = new ProdutoDAO;    
+            $dao->atualizar($produto);
+    
+            $response = $response->withJson($produto);
+            $response = $response->withHeader('Content-type', 'application/json');    
+            return $response;
+        }
+
         public function deletar(Request $request, Response $response, array $args){
             $id = $args['id'];
             

@@ -9,34 +9,15 @@
 
     $app = new \Slim\App;
 
-    $app->get('/produtos', function(){
-        
-    });
+    $app->get('/produtos', 'ProdutoController:listar');
 
-    $app->get('/produtos/{id}', function(){
-        
-    });
+    $app->get('/produtos/{id}', 'ProdutoController:buscarPorId');
 
-    $app->post('/produtos', function(){
-        
-    });
+    $app->post('/produtos', 'ProdutoController:inserir');
 
-    $app->put('/produtos/{id}', function(Request $request, Response $response, array $args){
-        $id = $args['id'];
-        $var = $request->getParsedBody();
-        $produto = new Produto($id, $var['nome'], $var['preco']);
+    $app->put('/produtos/{id}', 'ProdutoController:atualizar');
 
-        $dao = new ProdutoDAO;    
-        $dao->atualizar($produto);
-
-        $response = $response->withJson($produto);
-        $response = $response->withHeader('Content-type', 'application/json');    
-        return $response;
-    });
-
-    $app->delete('/produtos/{id}', function(){
-        
-    });
+    $app->delete('/produtos/{id}', 'ProdutoController:deletar');
 
 
     $app->run();
