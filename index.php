@@ -4,7 +4,7 @@
 
     include_once 'Models/Produto.php';
     include_once 'ProdutoDAO.php';
-    include_once 'Controllers/ProdutoController.php';
+    include_once 'Controller/ProdutoController.php';
 
     require './vendor/autoload.php';
 
