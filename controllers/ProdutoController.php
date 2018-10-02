@@ -1,9 +1,9 @@
 <?php
-    include_once 'Produto.php';
-    include_once 'ProdutoDAO.php';
+    include_once './Models/Produto.php';
+    include_once './Dao/ProdutoDAO.php';
     
     class ProdutoController{
-        public function listar(Request $request, Response $response){
+        public function listar($request, $response){
             $dao = new ProdutoDAO;    
             $array_produtos = $dao->listar();        
             
@@ -12,7 +12,7 @@
             return $response;
         }
 
-        public function buscarPorId(Request $request, Response $response, array $args){
+        public function buscarPorId($request, $response, array $args){
             $id = $args['id'];
     
             $dao = new ProdutoDAO;    
@@ -23,7 +23,7 @@
             return $response;
         }
 
-        public function inserir(Request $request, Response $response, array $args){
+        public function inserir($request,  $response, array $args){
             $var = $request->getParsedBody();
             $produto = new Produto(0, $var['nome'], $var['preco']);
     
@@ -36,7 +36,7 @@
             return $response;
         }
 
-        public function atualizar(Request $request, Response $response, array $args){
+        public function atualizar($request, $response, array $args){
             $id = $args['id'];
             $var = $request->getParsedBody();
             $produto = new Produto($id, $var['nome'], $var['preco']);
@@ -49,7 +49,7 @@
             return $response;
         }
 
-        public function deletar(Request $request, Response $response, array $args){
+        public function deletar($request, $response, array $args){
             $id = $args['id'];
             
             $dao = new ProdutoDAO; 

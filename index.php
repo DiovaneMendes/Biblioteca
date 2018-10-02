@@ -2,8 +2,9 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
-    include_once 'Produto.php';
+    include_once 'Models/Produto.php';
     include_once 'ProdutoDAO.php';
+    include_once 'Controllers/ProdutoController.php';
 
     require './vendor/autoload.php';
 
