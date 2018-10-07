@@ -31,7 +31,7 @@
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":nome",$produto->nome);
-            $comando->bindParam(":preco",$produto->preco);
+            $comando->bindParam(":preco",$produto->preco);            
             $comando->bindParam(":id",$produto->id);
             $comando->execute();        
         }
