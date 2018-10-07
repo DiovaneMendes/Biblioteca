@@ -5,7 +5,7 @@ CREATE TABLE usuarios(
 );
 
 CREATE TABLE autores(
-    id_autor PRIMARY KEY,
+    id_autor SERIAL PRIMARY KEY,
     nome VARCHAR(255),
     pais VARCHAR(255)
 );
@@ -27,13 +27,13 @@ CREATE TABLE clientes(
 );
 
 CREATE TABLE retirada_livros(
-    id_retirada_livro SERIAL PRIMARY KEY,
+    id_retirada SERIAL PRIMARY KEY,
     quantidade_vezes INTEGER,
     calculo_data_entrega DATE,
     cliente INTEGER REFERENCES clientes(id_cliente)
 );
 
 CREATE TABLE devolucao_livros(
-    id_devolucao_livro SERIAL PRIMARY KEY,
+    id_devolucao SERIAL PRIMARY KEY,
     verifica_atraso INTEGER
 );
