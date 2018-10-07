@@ -1,5 +1,5 @@
 <?php
-    include_once 'Produto.php';
+    include_once './Models/Produto.php';
 	include_once 'PDOFactory.php';
 
     class ProdutoDAO

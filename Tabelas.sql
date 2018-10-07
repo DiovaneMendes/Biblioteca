@@ -1,0 +1,5 @@
+CREATE TABLE PRODUTOS(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255),
+    preco FLOAT
+);
