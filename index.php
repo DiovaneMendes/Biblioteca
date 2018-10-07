@@ -4,6 +4,7 @@
 
     
     include_once 'Controllers/ProdutoController.php';
+    include_once 'Controllers/ClienteController.php';
 
     require './vendor/autoload.php';
 
@@ -15,6 +16,14 @@
         $this->get('/{id:[0-9]+}', 'ProdutoController:buscarPorId');
         $this->put('/{id:[0-9]+}', 'ProdutoController:atualizar');    
         $this->delete('/{id:[0-9]+}', 'ProdutoController:deletar');
+    });
+
+    $app->group('/clientes', function(){
+        $this->get('', 'ClienteController:listar');    
+        $this->post('', 'ClienteController:inserir');
+        $this->get('/{id:[0-9]+}', 'ClienteController:buscarPorId');
+        $this->put('/{id:[0-9]+}', 'ClienteController:atualizar');    
+        $this->delete('/{id:[0-9]+}', 'ClienteController:deletar');
     });
 
     $app->run();
