@@ -13,7 +13,7 @@
         }
 
         public function buscarPorId($request, $response, array $args){
-            $id_cliente = $args['id_cliente'];
+            $id_cliente = $args['id'];
     
             $dao = new ClienteDAO;    
             $cliente = $dao->buscarPorId($id_cliente);  
@@ -37,15 +37,22 @@
         }
 
         public function atualizar($request, $response, array $args){
-            $id_cliente = $args['id_cliente'];
+            $id_cliente = $args['id'];
             $var = $request->getParsedBody();
             $cliente = new Cliente($id_cliente, $var['matricula'], $var['nome'], $var['telefone']);
     
             $dao = new ClienteDAO;    
             $dao->atualizar($cliente);
-    
+            
             $response = $response->withJson($cliente);
-            $response = $response->withHeader('Content-type', 'application/json');    
+            $response = $response->withHeader('Content-type', 'application/json');
+
+            if($cliente->matricula == null || $cliente->nome == null){
+                $response = $response->withStatus(500);
+            }else{
+                $response = $response->withStatus(201);   
+            }    
+
             return $response;
         }
 

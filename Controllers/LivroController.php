@@ -16,7 +16,7 @@
             $id_livro = $args['id_livro'];
     
             $dao = new LivroDAO;    
-            $livro = $dao->buscarPorId($id);  
+            $livro = $dao->buscarPorId($id_livro);  
             
             $response = $response->withJson($livro);
             $response = $response->withHeader('Content-type', 'application/json');    
@@ -25,39 +25,46 @@
 
         public function inserir($request,  $response, array $args){
             $var = $request->getParsedBody();
-            $livro = new Livro(0, $var['nome'], $var['preco']);
+            $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
     
             $dao = new LivroDAO;    
             $livro = $dao->inserir($livro);
     
-            $response = $response->withJson($produto);
+            $response = $response->withJson($livro);
             $response = $response->withHeader('Content-type', 'application/json');    
             $response = $response->withStatus(201);
             return $response;
         }
 
         public function atualizar($request, $response, array $args){
-            $id = $args['id'];
+            $id_livro = $args['id_livro'];
             $var = $request->getParsedBody();
-            $produto = new Produto($id, $var['nome'], $var['preco']);
+            $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
     
-            $dao = new ProdutoDAO;    
-            $dao->atualizar($produto);
+            $dao = new LivroDAO;    
+            $dao->atualizar($livro);
     
-            $response = $response->withJson($produto);
-            $response = $response->withHeader('Content-type', 'application/json');    
+            $response = $response->withJson($livro);
+            $response = $response->withHeader('Content-type', 'application/json');
+            
+            if($livro->isbn == null || $livro->nome == null){
+                $response = $response->withStatus(500);
+            }else{
+                $response = $response->withStatus(201);   
+            } 
+            
             return $response;
         }
 
         public function deletar($request, $response, array $args){
-            $id = $args['id'];
+            $id_livro = $args['id_livro'];
             
-            $dao = new ProdutoDAO; 
-            $produto = $dao->buscarPorId($id);   
+            $dao = new LivroDao; 
+            $livro = $dao->buscarPorId($id_livro);   
            
-            $dao->deletar($id);
+            $dao->deletar($id_livro);
     
-            $response = $response->withJson($produto);
+            $response = $response->withJson($livro);
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;
         }

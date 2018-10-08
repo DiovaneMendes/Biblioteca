@@ -2,8 +2,7 @@
     include_once './Models/Livro.php';
 	include_once 'PDOFactory.php';
 
-    class LivroDAO
-    {
+    class LivroDAO{
         public function inserir(Livro $livro){
             $qInserir = "INSERT INTO livros(isbn,nome,autor,editora,ano) VALUES (:isbn,:nome,:autor,:editora,:ano)";            
             $pdo = PDOFactory::getConexao();
@@ -36,7 +35,7 @@
             $comando->bindParam(":editora",$livro->editora);
             $comando->bindParam(":ano",$livro->ano);           
             $comando->bindParam(":id_livro",$livro->id_livro);
-            $comando->execute();        
+            $comando->execute();
         }
 
         public function listar(){

@@ -2,10 +2,8 @@
     include_once './Models/Cliente.php';
 	include_once 'PDOFactory.php';
 
-    class ClienteDAO
-    {
-        public function inserir(Cliente $cliente)
-        {
+    class ClienteDAO{
+        public function inserir(Cliente $cliente){
             $qInserir = "INSERT INTO clientes(matricula,nome,telefone) VALUES (:matricula,:nome,:telefone)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
@@ -17,8 +15,7 @@
             return $cliente;
         }
 
-        public function deletar($id_cliente)
-        {
+        public function deletar($id_cliente){
             $qDeletar = "DELETE from clientes WHERE id_cliente=:id_cliente";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
@@ -26,8 +23,7 @@
             $comando->execute();
         }
 
-        public function atualizar(Cliente $cliente)
-        {
+        public function atualizar(Cliente $cliente){
             $qAtualizar = "UPDATE clientes SET matricula=:matricula, nome=:nome, telefone=:telefone WHERE id_cliente=:id_cliente";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
@@ -38,8 +34,7 @@
             $comando->execute();        
         }
 
-        public function listar()
-        {
+        public function listar(){
 		    $query = 'SELECT * FROM clientes';
     		$pdo = PDOFactory::getConexao();
 	    	$comando = $pdo->prepare($query);
@@ -51,8 +46,7 @@
             return $clientes;
         }
 
-        public function buscarPorId($id_cliente)
-        {
+        public function buscarPorId($id_cliente){
  		    $query = 'SELECT * FROM clientes WHERE id_cliente=:id_cliente';		
             $pdo = PDOFactory::getConexao(); 
 		    $comando = $pdo->prepare($query);
