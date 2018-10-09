@@ -71,7 +71,7 @@
 
         public function listarTudo($request, $response){
             $dao = new LivroDAO;    
-            $array_livros = $dao->buscarIdParaAutor(1);        
+            $array_livros = $dao->buscarIdParaAutor(5);        
             
             $response = $response->withJson($array_livros);
             $response = $response->withHeader('Content-type', 'application/json');    

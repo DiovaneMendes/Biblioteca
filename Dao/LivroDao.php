@@ -66,7 +66,7 @@
 		    $comando->bindParam ('id_livro', $id_livro);
             $comando->execute();
             if($obj=$comando->fetch(PDO::FETCH_OBJ)){
-                $obj->autor = $this->buscarAutores($id_autor);
+                $obj->autor = $this->buscarAutores($id_livro);
                 return $obj;
             }else{
                 return null;
@@ -74,12 +74,13 @@
         }
 
         public function buscarAutores($id_autor){
-            $query = 'SELECT autor.nome, autor.pais 
+            $query = 'SELECT autores.nome, autores.pais 
                       FROM livro_autor
-                      JOIN autor ON(autor.id_autor = livro_autor.id_autor)
-                      WHERE id_autor=:id_autor';
+                      JOIN autores ON(livro_autor.id_autor = autores.id_autores)
+                      WHERE autores.id_autor=:id_autor';
+            $pdo = PDOFactory::getConexao(); 
             $comando = $pdo->prepare($query);
-            $comando->bindParam (':id_autor', $id_autor);
+            $comando->bindParam ('id_autor', $id_autor);
             $comando->execute();
             $autores = array();
             while($obj=$comando->fetch(PDO::FETCH_OBJ)){

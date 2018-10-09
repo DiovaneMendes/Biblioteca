@@ -15,3 +15,6 @@ insert into autores values(3, 'Paulo Coelho', 'Espanha');
 insert into autores values(4, 'Chicharlito Hernades', 'Mexico');
 insert into autores values(5, 'Alexis Sanchez', 'Chile');
 insert into autores values(6, 'Cebolinha', 'Brasil');
+
+insert into livro_autor values(5,5);
+insert into livro_autor values(3,5);
