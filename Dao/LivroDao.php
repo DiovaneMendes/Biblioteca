@@ -63,14 +63,13 @@
             $query = 'SELECT * FROM livros WHERE id_livro=:id_livro';		
             $pdo = PDOFactory::getConexao(); 
 		    $comando = $pdo->prepare($query);
-		    $comando->bindParam ('id_livro', $id_livro);
+		    $comando->bindParam (':id_livro', $id_livro);
             $comando->execute();
-            if($obj=$comando->fetch(PDO::FETCH_OBJ)){
-                $obj->autor = $this->buscarAutores($id_livro);
-                return $obj;
-            }else{
-                return null;
+            if($row=$comando->fetch(PDO::FETCH_OBJ)){
+                $row->autores = $this->buscarAutores($id_livro);
+                return $row;
             }
+            return null;
         }
 
         public function buscarAutores($id_autor){
@@ -80,11 +79,11 @@
                       WHERE autores.id_autor=:id_autor';
             $pdo = PDOFactory::getConexao(); 
             $comando = $pdo->prepare($query);
-            $comando->bindParam ('id_autor', $id_autor);
+            $comando->bindParam (':id_autor', $id_autor);
             $comando->execute();
             $autores = array();
-            while($obj=$comando->fetch(PDO::FETCH_OBJ)){
-                $autores[] = new Autor($obj->nome, $obj->pais);
+            while($row=$comando->fetch(PDO::FETCH_OBJ)){
+                $autores[] = new Autor($row->nome, $row->pais);
             }
             return $autores;
         }
