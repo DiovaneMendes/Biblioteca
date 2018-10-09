@@ -14,7 +14,6 @@ CREATE TABLE livros(
     id_livro SERIAL PRIMARY KEY,
     isbn INTEGER,
     nome VARCHAR(255),
-    autor INTEGER REFERENCES autores(id_autor),
     editora VARCHAR(255),
     ano DATE
 );
@@ -36,4 +35,9 @@ CREATE TABLE retirada_livros(
 CREATE TABLE devolucao_livros(
     id_devolucao SERIAL PRIMARY KEY,
     verifica_atraso INTEGER
+);
+
+CREATE TABLE livro_autor(
+    id_livro INTEGER REFERENCES livros(id_livros),
+    id_autor INTEGER REFERENCES autores(id_autor)
 );
