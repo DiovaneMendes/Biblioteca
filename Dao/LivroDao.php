@@ -44,7 +44,8 @@
     		$comando->execute();
             $livros=array();	
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			    $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome,$row->editora,$row->ano);
+                $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome,$row->editora,$row->ano);
+                
             }
             return $livros;
         }
@@ -71,19 +72,19 @@
             }
             return null;
         }
-
-        public function buscarAutores($id_autor){
+//Adicionar id do autor
+        public function buscarAutores($id_livro){
             $query = 'SELECT autores.nome, autores.pais 
                       FROM livro_autor
                       JOIN autores ON(livro_autor.id_autor = autores.id_autores)
-                      WHERE autores.id_autor=:id_autor';
+                      WHERE autores.id_livro=:id_livro';
             $pdo = PDOFactory::getConexao(); 
             $comando = $pdo->prepare($query);
-            $comando->bindParam (':id_autor', $id_autor);
+            $comando->bindParam (':id_livro', $id_livro);
             $comando->execute();
             $autores = array();
             while($row=$comando->fetch(PDO::FETCH_OBJ)){
-                $autores[] = new Autor($row->nome, $row->pais);
+                $autores[] = new Autor($row->nome, $row->pais);//nao esquece
             }
             return $autores;
         }

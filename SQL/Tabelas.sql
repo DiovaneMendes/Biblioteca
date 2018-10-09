@@ -38,6 +38,6 @@ CREATE TABLE devolucao_livros(
 );
 
 CREATE TABLE livro_autor(
-    id_livro INTEGER REFERENCES livros(id_livros),
+    id_livro INTEGER REFERENCES livros(id_livro),
     id_autor INTEGER REFERENCES autores(id_autor)
 );
