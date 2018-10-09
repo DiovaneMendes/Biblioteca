@@ -13,7 +13,7 @@
         }
 
         public function buscarPorId($request, $response, array $args){
-            $id_livro = $args['id_livro'];
+            $id_livro = $args['id'];
     
             $dao = new LivroDAO;    
             $livro = $dao->buscarPorId($id_livro);  
@@ -25,7 +25,7 @@
 
         public function inserir($request,  $response, array $args){
             $var = $request->getParsedBody();
-            $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
+            $livro = new Livro(0, $var['isbn'], $var['nome'], 0, $var['editora'], $var['ano']);
     
             $dao = new LivroDAO;    
             $livro = $dao->inserir($livro);
@@ -37,7 +37,7 @@
         }
 
         public function atualizar($request, $response, array $args){
-            $id_livro = $args['id_livro'];
+            $id_livro = $args['id'];
             $var = $request->getParsedBody();
             $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
     
@@ -57,7 +57,7 @@
         }
 
         public function deletar($request, $response, array $args){
-            $id_livro = $args['id_livro'];
+            $id_livro = $args['id'];
             
             $dao = new LivroDao; 
             $livro = $dao->buscarPorId($id_livro);   

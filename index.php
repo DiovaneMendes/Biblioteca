@@ -33,7 +33,7 @@
         $this->put('/{id:[0-9]+}', 'LivroController:atualizar');    
         $this->delete('/{id:[0-9]+}', 'LivroController:deletar');
 
-        //$this->get('/a', 'LivroController:listarTudo');
+        $this->get('/a', 'LivroController:listarTudo');
     });
 
     $app->run();

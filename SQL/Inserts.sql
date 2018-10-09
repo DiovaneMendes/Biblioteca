@@ -16,5 +16,13 @@ insert into autores values(default, 'Chicharlito Hernades', 'Mexico');
 insert into autores values(default, 'Alexis Sanchez', 'Chile');
 insert into autores values(default, 'Cebolinha', 'Brasil');
 
-insert into livro_autor values(5,5);
+insert into livro_autor values(1,5);
+insert into livro_autor values(2,5);
 insert into livro_autor values(3,5);
+insert into livro_autor values(4,5);
+insert into livro_autor values(5,5);
+insert into livro_autor values(6,5);
+insert into livro_autor values(7,5);
+insert into livro_autor values(8,5);
+insert into livro_autor values(9,5);
+insert into livro_autor values(10,5);
