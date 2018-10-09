@@ -6,4 +6,4 @@ Uma aplicação com PHP.
 
 - PHP 5.6.12
 - Slim Framework
-- Postgres
+- Postgres 9.3
