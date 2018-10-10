@@ -66,7 +66,7 @@
         }
 
         public function deletar($request, $response, array $args){
-            $id_autor = $args['id_autor'];
+            $id_autor = $args['id'];
             
             $dao = new AutorDAO; 
             $autor = $dao->buscarPorId($id_autor);   

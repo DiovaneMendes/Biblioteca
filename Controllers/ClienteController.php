@@ -72,7 +72,7 @@
         }
 
         public function deletar($request, $response, array $args){
-            $id_cliente = $args['id_cliente'];
+            $id_cliente = $args['id'];
             
             $dao = new clienteDAO; 
             $cliente = $dao->buscarPorId($id_cliente);   
