@@ -43,16 +43,14 @@
             $dao = new ClienteDAO;  
             $busca = $dao->buscarPorId($id_cliente);
 
-            $cliente = new Cliente($busca->id_autor, $busca->nome, $busca->pais);
+            $cliente = new Cliente($busca->id_cliente, $busca->matricula, $busca->nome, $busca->telefone);
 
             if($var['nome'] == null){
                  $var['nome'] = $cliente->nome; 
             }
-
             if($var['matricula'] == null){
                 $var['matricula'] = $cliente->matricula; 
-           }
-
+            }
             if($var['telefone'] == null){
                 $var['telefone'] = $cliente->telefone; 
             }

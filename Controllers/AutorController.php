@@ -46,7 +46,6 @@
             if($var['nome'] == null){
                  $var['nome'] = $autor->nome; 
             }
-
             if($var['pais'] == null){
                 $var['pais'] = $autor->pais; 
             }
@@ -62,8 +61,7 @@
                 $response = $response->withStatus(500);
             }else{
                 $response = $response->withStatus(201);   
-            } 
-
+            }
             return $response;
         }
 

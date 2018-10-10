@@ -39,10 +39,30 @@
         public function atualizar($request, $response, array $args){
             $id_livro = $args['id'];
             $var = $request->getParsedBody();
+            $dao = new LivroDAO;  
+
+            $busca = $dao->buscarPorId($id_livro);
             
-            $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
-    
-            $dao = new LivroDAO;    
+            $livro = new Livro($busca->id_livro, $busca->isbn, $busca->nome, $busca->autor, $busca->editora, $busca->ano);
+
+            if($var['isbn'] == null){
+                $var['isbn'] = $livro->isbn; 
+            }
+            if($var['nome'] == null){
+                $var['nome'] = $livro->nome; 
+            }
+            if($var['autor'] == null){
+                $var['autor'] = $livro->autor; 
+            }
+            if($var['editora'] == null){
+               $var['editora'] = $livro->editora; 
+            }
+            if($var['ano'] == null){
+                $var['ano'] = $livro->ano; 
+            }           
+            
+            $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);    
+              
             $dao->atualizar($livro);
     
             $response = $response->withJson($livro);
@@ -52,8 +72,7 @@
                 $response = $response->withStatus(500);
             }else{
                 $response = $response->withStatus(201);   
-            } 
-            
+            }             
             return $response;
         }
 
