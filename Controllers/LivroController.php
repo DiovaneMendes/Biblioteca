@@ -25,7 +25,7 @@
 
         public function inserir($request,  $response, array $args){
             $var = $request->getParsedBody();
-            $livro = new Livro(0, $var['isbn'], $var['nome'], 0, $var['editora'], $var['ano']);
+            $livro = new Livro(0, $var['isbn'], $var['nome'],[], $var['editora'], $var['ano']);
     
             $dao = new LivroDAO;    
             $livro = $dao->inserir($livro);
@@ -39,6 +39,7 @@
         public function atualizar($request, $response, array $args){
             $id_livro = $args['id'];
             $var = $request->getParsedBody();
+            
             $livro = new Livro(0, $var['isbn'], $var['nome'], $var['autor'], $var['editora'], $var['ano']);
     
             $dao = new LivroDAO;    
@@ -69,10 +70,9 @@
             return $response;
         }
 
-        public function listarTudo($request, $response){
-            $dao = new LivroDAO;    
-            $array_livros = $dao->buscarIdParaAutor(5);        
-            
+        public function buscarAutores($request, $response){
+            $dao = new LivroDao;    
+            $array_livros = $dao->buscarIdParaAutor(5);
             $response = $response->withJson($array_livros);
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;

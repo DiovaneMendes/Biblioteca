@@ -39,9 +39,26 @@
         public function atualizar($request, $response, array $args){
             $id_cliente = $args['id'];
             $var = $request->getParsedBody();
-            $cliente = new Cliente($id_cliente, $var['matricula'], $var['nome'], $var['telefone']);
-    
-            $dao = new ClienteDAO;    
+
+            $dao = new ClienteDAO;  
+            $busca = $dao->buscarPorId($id_cliente);
+
+            $cliente = new Cliente($busca->id_autor, $busca->nome, $busca->pais);
+
+            if($var['nome'] == null){
+                 $var['nome'] = $cliente->nome; 
+            }
+
+            if($var['matricula'] == null){
+                $var['matricula'] = $cliente->matricula; 
+           }
+
+            if($var['telefone'] == null){
+                $var['telefone'] = $cliente->telefone; 
+            }
+            
+            $cliente = new Cliente($id_cliente, $var['matricula'], $var['nome'], $var['telefone']);    
+              
             $dao->atualizar($cliente);
             
             $response = $response->withJson($cliente);

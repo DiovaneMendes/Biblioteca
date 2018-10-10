@@ -5,14 +5,14 @@
 
     class LivroDAO{
         public function inserir(Livro $livro){
-            $qInserir = "INSERT INTO livros(isbn,nome,editora,ano) VALUES (:isbn,:nome,:autor,:editora,:ano)";            
+            $qInserir = "INSERT INTO livros(isbn,nome,editora,ano) VALUES (:isbn,:nome,:editora,:ano)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":isbn",$livro->isbn);
             $comando->bindParam(":nome",$livro->nome);
 
-            $autor[] = $this-> buscarAutores($livro->id_livro);
-            $comando->bindParam(":autor",$autor);
+            //$autor[] = $this-> buscarAutores($livro->id_livro);
+            //$comando->bindParam(":autor",$livro->autor);
 
             $comando->bindParam(":editora",$livro->editora);
             $comando->bindParam(":ano",$livro->ano);
@@ -47,9 +47,10 @@
 	    	$comando = $pdo->prepare($query);
     		$comando->execute();
             $livros = array();
+            $autores = array();
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-                $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome,$row->editora,$row->ano);
-                
+                $autores[] = $this->buscarAutores($row->id_livro);
+                $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome/*,$autores->autor*/,$row->editora,$row->ano);                
             }
             return $livros;
         }
@@ -80,8 +81,8 @@
         public function buscarAutores($id_livro){
             $query = 'SELECT autores.id_autor, autores.nome, autores.pais 
                       FROM livro_autor
-                      JOIN autores ON(livro_autor.id_autor = autores.id_autores)
-                      WHERE autores.id_livro=:id_livro';
+                      JOIN autores ON(livro_autor.id_autor = autores.id_autor)
+                      WHERE autores.id_autor=:id_livro';
             $pdo = PDOFactory::getConexao(); 
             $comando = $pdo->prepare($query);
             $comando->bindParam (':id_livro', $id_livro);

@@ -39,9 +39,20 @@
         public function atualizar($request, $response, array $args){
             $id_autor = $args['id'];
             $var = $request->getParsedBody();
-            $autor = new Autor($id_autor, $var['nome'], $var['pais']);
-    
-            $dao = new AutorDAO;    
+            $dao = new AutorDAO;
+            $busca = $dao->buscarPorId($id_autor);
+            $autor = new Autor($busca->id_autor, $busca->nome, $busca->pais);
+
+            if($var['nome'] == null){
+                 $var['nome'] = $autor->nome; 
+            }
+
+            if($var['pais'] == null){
+                $var['pais'] = $autor->pais; 
+            }
+
+            $autor = new Autor($id_autor, $var['nome'], $var['pais']);    
+                
             $dao->atualizar($autor);
             
             $response = $response->withJson($autor);
