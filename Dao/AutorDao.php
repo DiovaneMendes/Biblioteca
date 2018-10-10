@@ -1,5 +1,5 @@
 <?php
-    include_once './Models/autor.php';
+    include_once './Models/Autor.php';
 	include_once 'PDOFactory.php';
 
     class AutorDAO{
