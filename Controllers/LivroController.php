@@ -96,5 +96,18 @@
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;
         }
+
+        public function inserirDois($request,  $response, array $args){
+            $var = $request->getParsedBody();
+            $livro = new Livro(0, $var['isbn'], $var['nome'],[], $var['editora'], $var['ano']);
+    
+            $dao = new LivroDAO;    
+            $livro = $dao->inserirDois($livro);
+    
+            $response = $response->withJson($livro);
+            $response = $response->withHeader('Content-type', 'application/json');    
+            $response = $response->withStatus(201);
+            return $response;
+        }
     }
 ?>

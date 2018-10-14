@@ -10,10 +10,6 @@
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":isbn",$livro->isbn);
             $comando->bindParam(":nome",$livro->nome);
-
-            //$autor[] = $this-> buscarAutores($livro->id_livro);
-            //$comando->bindParam(":autor",$livro->autor);
-
             $comando->bindParam(":editora",$livro->editora);
             $comando->bindParam(":ano",$livro->ano);
             $comando->execute();
@@ -47,7 +43,6 @@
 	    	$comando = $pdo->prepare($query);
     		$comando->execute();
             $livros = array();
-            $autores;
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
                 $autores = $this->buscarAutores($row->id_livro);                
                 $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome,$autores,$row->editora,$row->ano);
@@ -61,28 +56,17 @@
 		    $comando = $pdo->prepare($query);
 		    $comando->bindParam ('id_livro', $id_livro);
             $comando->execute();
-		    $result = $comando->fetch(PDO::FETCH_OBJ);
-		    return new Livro($result->id_livro,$result->isbn,$result->nome,$result->editora,$result->ano);           
+            $result = $comando->fetch(PDO::FETCH_OBJ);
+            $autores = $this->buscarAutores($id_livro);
+            
+		    return new Livro($result->id_livro,$result->isbn,$result->nome,$autores,$result->editora,$result->ano);           
         }
-
-        /*public function buscarIdParaAutor($id_livro){
-            $query = 'SELECT * FROM livros WHERE id_livro=:id_livro';		
-            $pdo = PDOFactory::getConexao(); 
-		    $comando = $pdo->prepare($query);
-		    $comando->bindParam (':id_livro', $id_livro);
-            $comando->execute();
-            if($row=$comando->fetch(PDO::FETCH_OBJ)){
-                $row->autores = $this->buscarAutores($id_livro);
-                return $row;
-            }
-            return null;
-        }*/
         
         public function buscarAutores($id_livro){
-            $query = 'SELECT autores.id_autor, autores.nome, autores.pais 
+            $query = "SELECT autores.id_autor, autores.nome, autores.pais 
                       FROM livro_autor
                       JOIN autores ON(livro_autor.id_autor = autores.id_autor)
-                      WHERE autores.id_autor=:id_livro';
+                      WHERE autores.id_autor=:id_livro";
             $pdo = PDOFactory::getConexao(); 
             $comando = $pdo->prepare($query);
             $comando->bindParam (':id_livro', $id_livro);
