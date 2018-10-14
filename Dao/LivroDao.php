@@ -47,10 +47,10 @@
 	    	$comando = $pdo->prepare($query);
     		$comando->execute();
             $livros = array();
-            $autores = array();
+            $autores;
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-                $autores[] = $this->buscarAutores($row->id_livro);
-                $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome/*,$autores->autor*/,$row->editora,$row->ano);                
+                $autores = $this->buscarAutores($row->id_livro);                
+                $livros[] = new Livro($row->id_livro,$row->isbn,$row->nome,$autores,$row->editora,$row->ano);
             }
             return $livros;
         }

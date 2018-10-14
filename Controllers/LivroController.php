@@ -91,8 +91,8 @@
 
         public function buscarAutores($request, $response){
             $dao = new LivroDao;    
-            $array_livros = $dao->buscarIdParaAutor(5);
-            $response = $response->withJson($array_livros);
+            $array_autores = $dao->buscarAutores(5);
+            $response = $response->withJson($array_autores);
             $response = $response->withHeader('Content-type', 'application/json');    
             return $response;
         }

@@ -7,6 +7,6 @@ Uma aplicação com PHP.
 
 ## Dependências
 
-- PHP 5.6.12
+- PHP
 - Slim Framework
-- Postgres 9.3
+- Postgres
