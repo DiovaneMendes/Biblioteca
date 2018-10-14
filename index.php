@@ -34,7 +34,6 @@
         $this->delete('/{id:[0-9]+}', 'LivroController:deletar');
 
         $this->get('/a', 'LivroController:buscarAutores');
-        $this->post('/d', 'LivroController:inserirDois');
     });
 
     $app->run();

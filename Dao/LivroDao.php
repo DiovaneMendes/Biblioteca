@@ -57,8 +57,7 @@
 		    $comando->bindParam ('id_livro', $id_livro);
             $comando->execute();
             $result = $comando->fetch(PDO::FETCH_OBJ);
-            $autores = $this->buscarAutores($id_livro);
-            
+            $autores = $this->buscarAutores($id_livro);            
 		    return new Livro($result->id_livro,$result->isbn,$result->nome,$autores,$result->editora,$result->ano);           
         }
         
