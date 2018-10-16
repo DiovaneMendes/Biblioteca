@@ -22,6 +22,7 @@
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
             $comando->bindParam(":id_livro",$id_livro);
+            $this->deletaTemp($id_livro);
             $comando->execute();
         }
 
@@ -78,7 +79,11 @@
         }
         
         public function deletaTemp($id_livro){
-            $query = "DELETE ";
+            $qDeletar = "DELETE from livro_autor WHERE id_livro=:id_livro";            
+            $pdo = PDOFactory::getConexao();
+            $comando = $pdo->prepare($qDeletar);
+            $comando->bindParam(":id_livro",$id_livro);
+            $comando->execute();
         }
     }
 ?>
