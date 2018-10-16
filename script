@@ -1,12 +1,18 @@
-
 case $1 in
   run)
-    docker run --name biblioteca-db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres 
-
+    docker run --name biblioteca-db -p 5432:5432 -e POSTGRES_PASSWORD=biblioteca -d postgres 
   ;;
 
   start)
     docker container start biblioteca-db 2> /dev/null || ./bancoDocker run
+  ;;
+
+  stop)
+    docker stop biblioteca-db
+  ;;
+
+  rm)
+    docker rm biblioteca-db
   ;;
 
   create)
