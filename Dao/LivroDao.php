@@ -76,5 +76,9 @@
             }
             return $autores;
         }
+        
+        public function deletaTemp($id_livro){
+            $query = "DELETE ";
+        }
     }
 ?>
