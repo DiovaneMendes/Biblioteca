@@ -1,10 +1,10 @@
 <?php
     include_once './Models/Livro.php';
-    include_once './Dao/LivroDAO.php';
+    include_once './Dao/LivroDao.php';
     
     class LivroController{
         public function listar($request, $response){
-            $dao = new LivroDAO;    
+            $dao = new LivroDao;    
             $array_livros = $dao->listar();        
             
             $response = $response->withJson($array_livros);
@@ -15,7 +15,7 @@
         public function buscarPorId($request, $response, array $args){
             $id_livro = $args['id'];
     
-            $dao = new LivroDAO;    
+            $dao = new LivroDao;    
             $livro = $dao->buscarPorId($id_livro);  
             
             $response = $response->withJson($livro);
@@ -27,7 +27,7 @@
             $var = $request->getParsedBody();
             $livro = new Livro(0, $var['isbn'], $var['nome'],[], $var['editora'], $var['ano']);
     
-            $dao = new LivroDAO;    
+            $dao = new LivroDao;    
             $livro = $dao->inserir($livro);
     
             $response = $response->withJson($livro);
@@ -39,7 +39,7 @@
         public function atualizar($request, $response, array $args){
             $id_livro = $args['id'];
             $var = $request->getParsedBody();
-            $dao = new LivroDAO;  
+            $dao = new LivroDao;  
 
             $busca = $dao->buscarPorId($id_livro);
             
@@ -101,7 +101,7 @@
             $var = $request->getParsedBody();
             $livro = new Livro(0, $var['isbn'], $var['nome'],[], $var['editora'], $var['ano']);
     
-            $dao = new LivroDAO;    
+            $dao = new LivroDao;    
             $livro = $dao->inserirDois($livro);
     
             $response = $response->withJson($livro);

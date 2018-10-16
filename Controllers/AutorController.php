@@ -1,10 +1,10 @@
 <?php
     include_once './Models/Autor.php';
-    include_once './Dao/AutorDAO.php';
+    include_once './Dao/AutorDao.php';
     
     class AutorController{
         public function listar($request, $response){
-            $dao = new AutorDAO;    
+            $dao = new AutorDao;    
             $array_autores = $dao->listar();        
             
             $response = $response->withJson($array_autores);
@@ -15,7 +15,7 @@
         public function buscarPorId($request, $response, array $args){
             $id_autor = $args['id'];
     
-            $dao = new AutorDAO;    
+            $dao = new AutorDao;    
             $autor = $dao->buscarPorId($id_autor);  
             
             $response = $response->withJson($autor);
@@ -27,7 +27,7 @@
             $var = $request->getParsedBody();
             $autor = new Autor(0, $var['nome'], $var['pais']);
     
-            $dao = new AutorDAO;    
+            $dao = new AutorDao;    
             $autor = $dao->inserir($autor);
     
             $response = $response->withJson($autor);
@@ -39,7 +39,7 @@
         public function atualizar($request, $response, array $args){
             $id_autor = $args['id'];
             $var = $request->getParsedBody();
-            $dao = new AutorDAO;
+            $dao = new AutorDao;
             $busca = $dao->buscarPorId($id_autor);
             $autor = new Autor($busca->id_autor, $busca->nome, $busca->pais);
 
@@ -68,7 +68,7 @@
         public function deletar($request, $response, array $args){
             $id_autor = $args['id'];
             
-            $dao = new AutorDAO; 
+            $dao = new AutorDao; 
             $autor = $dao->buscarPorId($id_autor);   
            
             $dao->deletar($id_autor);
