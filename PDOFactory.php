@@ -6,7 +6,7 @@
         {
             if(!isset($pdo)){
                 //$pdo = new PDO("mysql:host=localhost;dbname=biblioteca;charset=UTF8","root", "");
-                $pdo = new PDO("pgsql:host=localhost;dbname=biblioteca;user=postgres;password=postgres;");
+                $pdo = new PDO("pgsql:host=biblioteca-db;dbname=biblioteca;user=postgres;password=biblioteca;");
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		        $pdo->setAttribute(PDO::ATTR_STRINGIFY_FETCHES,false);

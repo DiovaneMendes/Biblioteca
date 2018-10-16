@@ -9,4 +9,5 @@ Uma aplicação com PHP.
 
 - PHP
 - Slim Framework
+- Docker
 - Postgres

@@ -1,6 +1,6 @@
 case $1 in
   run)
-    docker run --name biblioteca-db -p 5432:5432 -e POSTGRES_PASSWORD=biblioteca -d postgres 
+    docker run --name biblioteca-db -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=biblioteca -d postgres 
   ;;
 
   start)
