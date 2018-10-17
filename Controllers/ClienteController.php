@@ -1,10 +1,10 @@
 <?php
     include_once './Models/Cliente.php';
-    include_once './Dao/ClienteDAO.php';
+    include_once './Dao/ClienteDao.php';
     
     class ClienteController{
         public function listar($request, $response){
-            $dao = new ClienteDAO;    
+            $dao = new ClienteDao;    
             $array_clientes = $dao->listar();        
             
             $response = $response->withJson($array_clientes);
@@ -15,7 +15,7 @@
         public function buscarPorId($request, $response, array $args){
             $id_cliente = $args['id'];
     
-            $dao = new ClienteDAO;    
+            $dao = new ClienteDao;    
             $cliente = $dao->buscarPorId($id_cliente);  
             
             $response = $response->withJson($cliente);
@@ -27,7 +27,7 @@
             $var = $request->getParsedBody();
             $cliente = new Cliente(0, $var['matricula'], $var['nome'], $var['telefone']);
     
-            $dao = new ClienteDAO;    
+            $dao = new ClienteDao;    
             $cliente = $dao->inserir($cliente);
     
             $response = $response->withJson($cliente);
@@ -40,7 +40,7 @@
             $id_cliente = $args['id'];
             $var = $request->getParsedBody();
 
-            $dao = new ClienteDAO;  
+            $dao = new ClienteDao;  
             $busca = $dao->buscarPorId($id_cliente);
 
             $cliente = new Cliente($busca->id_cliente, $busca->matricula, $busca->nome, $busca->telefone);
@@ -74,7 +74,7 @@
         public function deletar($request, $response, array $args){
             $id_cliente = $args['id'];
             
-            $dao = new clienteDAO; 
+            $dao = new ClienteDao; 
             $cliente = $dao->buscarPorId($id_cliente);   
            
             $dao->deletar($id_cliente);
