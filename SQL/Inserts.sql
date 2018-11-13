@@ -19,3 +19,7 @@ insert into autores values(default, 'Cebolinha', 'Brasil');
 
 insert into livro_autor values(5,5);
 insert into livro_autor values(4,4);
+
+insert into clientes values(default, 631610219, 'Guilhermo', 9957862);
+insert into clientes values(default, 647889237, 'Totodaio', 9957416);
+insert into clientes values(default, 547896480, 'Dondoca', 9875361);

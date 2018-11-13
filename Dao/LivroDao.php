@@ -14,6 +14,7 @@
             $comando->bindParam(":ano",$livro->ano);
             $comando->execute();
             $livro->id_livro = $pdo->lastInsertId();
+            $this->inserirTemp($livro->id_livro);
             return $livro;
         }
 
@@ -22,6 +23,7 @@
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
             $comando->bindParam(":id_livro",$id_livro);
+            $this->deletaTemp($id_livro);
             $comando->execute();
         }
 
@@ -75,6 +77,33 @@
                 $autores[] = new Autor($row->id_autor,$row->nome, $row->pais);
             }
             return $autores;
+        }
+        
+        public function deletaTemp($id_livro){
+            $qDeletar = "DELETE from livro_autor WHERE id_livro=:id_livro";            
+            $pdo = PDOFactory::getConexao();
+            $comando = $pdo->prepare($qDeletar);
+            $comando->bindParam(":id_livro",$id_livro);
+            $comando->execute();
+        }
+
+        public function inserirTemp($id_livro){
+            $qInserir = "INSERT INTO livro_autor(id_livro, id_autor) VALUES(:id_livro, :id_autor)";
+            $pdo = PDOFactory::getConexao();
+            $comando = $pdo->prepare($qInserir);
+            $comando->bindParam(":id_livro", $id_livro);
+            $comando->bindParam(":id_autor", $this->procuraIdAutor($id_livro));
+            $comando->execute();
+        }
+
+        public function procuraIdAutor($id_autor){
+            $query = "SELECT * FROM autores WHERE id_autor=:id_autor";		
+            $pdo = PDOFactory::getConexao(); 
+		    $comando = $pdo->prepare($query);
+		    $comando->bindParam (":id_autor", $id_autor);
+            $comando->execute();
+            $row = $comando->fetch(PDO::FETCH_OBJ);
+            return $row->id_autor;
         }
     }
 ?>
