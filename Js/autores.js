@@ -2,8 +2,8 @@ $(document).ready(() => {
     setInterval(loadJson,5000);    
 });
 
-let loadJson = () => {
-    $.get("/autores",
+let  loadJson = () => {
+    $.get("http://localhost:8080/autores",
         (jsonObject) => {
             trataJson(jsonObject);
         }
@@ -40,6 +40,5 @@ let trataJson = (jsonObject) => {
         table.append(trCorpo);
 
         $("main").append(table);
-        console.log($("main").html());
     }
 }
