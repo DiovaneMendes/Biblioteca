@@ -11,7 +11,7 @@ let loadJson = () => {
     );
 }
 
-let trataJson = (jsonObject) => {
+const trataJson = (jsonObject) => {
     $("main").empty();
     let tituloH1 = $("<h1>Informações</h1>");
     let table = $("<table></table>");
