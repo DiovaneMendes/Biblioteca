@@ -2,7 +2,7 @@ $(document).ready(() => {
     setInterval(loadJson,5000);    
 });
 
-let  loadJson = () => {
+let loadJson = () => {
     $.get("http://localhost:8080/autores",
         (jsonObject) => {
             trataJson(jsonObject);
