@@ -14,7 +14,7 @@ let enviarAutor = (autor) => {
     $.post("http://localhost:8080/autores",
         (jsonObject) => {
             limparFormulario();
-            window.loadJson();
+            loadJson();
         }
     );
 }

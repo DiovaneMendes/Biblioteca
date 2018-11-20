@@ -9,9 +9,10 @@
 <body>
     <main>
         <h1>Cadastro Autor</h1>
-        <form id="formulario">
+        <form id="formulario" onsubmit="post(event)">
             <label for="txtnome">Nome:</label>
             <input type="text" id="txtnome">
+            <br/>
             <br/>
             <label for="txtpais">País:</label>
             <input type="text" id="txtpais">
@@ -23,6 +24,7 @@
         </form>
     </main>    
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>    
-<script src="../Js/Autor/post.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/Js/Autor/post.js"></script>    
+<script src="/Js/Autor/get.js"></script>
 </html>

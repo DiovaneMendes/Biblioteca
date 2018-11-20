@@ -1,5 +1,6 @@
+
 $(document).ready(() => {
-    setInterval(loadJson,5000);    
+    loadJson();    
 });
 
 let loadJson = () => {
@@ -12,21 +13,17 @@ let loadJson = () => {
 
 let trataJson = (jsonObject) => {
     $("main").empty();
+    let tituloH1 = $("<h1>Informações</h1>");
+    let table = $("<table></table>");
+    let trCabecalho = $("<tr></tr>");
+    let thId = $("<th> Id </th>");
+    let thNome = $("<th> Nome </th>");
+    let thPais = $("<th> País </th>");
+    trCabecalho.append(thId, thNome, thPais);
+    table.append(trCabecalho);
+
     for(let indice in jsonObject){
         
-        let table = $("<table></table>");
-        if(indice %3 == 1){
-            table.addClass("central");
-        }
-
-        let trCabecalho = $("<tr></tr>");
-        let thId = $("<th> Id </th>");
-        let thNome = $("<th> Nome </th>");
-        let thPais = $("<th> País </th>");
-        trCabecalho.append(thId, thNome, thPais);
-        table.append(trCabecalho);
-
-
         let trCorpo = $("<tr></tr>");
         let tdId = $("<td></td>");
         let tdNome = $("<td></td>");
@@ -39,6 +36,6 @@ let trataJson = (jsonObject) => {
         trCorpo.append(tdId, tdNome, tdPais);
         table.append(trCorpo);
 
-        $("main").append(table);
+        $("main").append(tituloH1, table);
     }
 }
