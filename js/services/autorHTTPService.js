@@ -1,4 +1,4 @@
-class autorHTTPService{
+class AutorHTTPService{
     constructor(){
 
     }
