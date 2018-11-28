@@ -9,7 +9,7 @@ class AutorController{
         autor.nome = document.querySelector("#txtnome").value;
         autor.pais = document.querySelector("#txtpais").value;
     
-        enviarAutor(autor);
+        this.enviarAutor(autor);
     }
 
     enviarAutor(autor){
@@ -32,8 +32,8 @@ class AutorController{
 
 
     limparFormulario(){
-        autor.nome = document.querySelector("#txtnome").value="";
-        autor.pais = document.querySelector("#txtpais").value="";
+        document.querySelector("#txtnome").value="";
+        document.querySelector("#txtpais").value="";
     }
 
     carregarAutores(event){

@@ -1,6 +1,6 @@
 let autorController = new AutorController();
 
-document.querySelector("body").onload(autorController.carregarAutores());
+window.addEventListener("load",autorController.carregarAutores.bind(autorController));
 
 document.querySelector("#formulario").addEventListener("submit", autorController.salvarAutor.bind(autorController));
 
