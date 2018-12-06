@@ -4,7 +4,7 @@
 
         public static function getConexao(){
             if(!isset($pdo)){
-                //$pdo = new PDO("pgsql:host=localhost;dbname=biblioteca-db;user=postgres;password=admin;");
+                //$pdo = new PDO("pgsql:host=localhost;port:5432;dbname=biblioteca-db;user=postgres;password=postgres;");
                 $pdo = new PDO("mysql:host=localhost;dbname=biblioteca;charset=UTF8","root", "");
 
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

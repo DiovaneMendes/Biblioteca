@@ -1,6 +1,6 @@
 <?php
     include_once './Models/Cliente.php';
-	include_once 'PDOFactory.php';
+	include_once './PDOFactory.php';
 
     class ClienteDAO{
         public function inserir(Cliente $cliente){
