@@ -34,4 +34,37 @@ class AutorHTTPService{
         xhttp.open("GET", this.uri, true);
         xhttp.send();
     }
+
+    deletarAutor(id, ok, error){
+        console.log("Deletado!");
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                ok(JSON.parse(this.responseText));
+            }
+            else if(this.status !== 200){
+                error(this.status);
+            }
+        };
+
+        console.log(this.uri+id);
+
+        xhttp.open("DELETE", this.uri+id, true);
+        xhttp.send();
+    }
+
+    carregarAutor(id, ok, error){
+        console.log("Hello World!");
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                ok(JSON.parse(this.responseText));
+            }
+            else if(this.status !== 200){
+                error(this.status);
+            }
+        };
+        xhttp.open("GET", this.uri+"/"+id, true);
+        xhttp.send();
+    }
 }
