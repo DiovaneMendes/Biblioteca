@@ -6,7 +6,7 @@ class AutorHTTPService{
     enviarAutor(autor, ok, error){
         let xhttp = new XMLHttpRequest();
 
-        xhttp.onreadystatechange = () => {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 201) {
                 ok();
             }
@@ -23,7 +23,7 @@ class AutorHTTPService{
     carregarAutores(ok, error){
         console.log("Hello World!");
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = () => {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 ok(JSON.parse(this.responseText));
             }

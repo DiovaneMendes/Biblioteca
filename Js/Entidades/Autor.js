@@ -1,6 +1,6 @@
 class Autor{
-    constructor(id_autor, nome, pais){
-        this.id_autor = id_autor;
+    constructor(idAutor, nome, pais){
+        this.idAutor = idAutor;
         this.nome = nome;
         this.pais = pais;
     }

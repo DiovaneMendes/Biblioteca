@@ -1,6 +1,6 @@
 <?php
     include_once './Models/Autor.php';
-	include_once './PDOFactory.php';
+	include_once 'PDOFactory.php';
 
     class AutorDAO{
         public function inserir(Autor $autor){

@@ -4,21 +4,23 @@ class AutorView {
         this.seletorTabela = selTabela;
     }
 
-    montaTabela(){
+    montaTabela(autores){
         var tabela = document.querySelector(this.seletorTabela);
         tabela.innerHTML = this.templateTabela(autores);
     }
 
     templateTabela(autores){
-        return `<tr>
-                    <td>Nome</td>
-                    <td>País</td>
-                </tr>
-                <tr>
+        return `<table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>País</th>
+                    </tr>
                     ${autores.map(autor =>
-                        `<td>${autor.nome}</td>
-                         <td>${autor.pais}</td>                   
+                        `<tr>                        
+                            <td>${autor.nome}</td>
+                            <td>${autor.pais}</td> 
+                        </tr>
                     `).join('')}
-                </tr>`
+                </table>`
     }
 }

@@ -1,14 +1,14 @@
 class AutorController{
     constructor(){
         this.service = new AutorHTTPService();
-        this.view = new AutorView("#form, #tabela");
+        this.view = new AutorView("#form", "#tabela");
     }
 
     salvarAutor(event){
         event.preventDefault();
         const self = this;
 
-        let autor = new Autor();
+        const autor = new Autor();
         autor.nome = document.querySelector("#txtnome").value;
         autor.pais = document.querySelector("#txtpais").value;
     
