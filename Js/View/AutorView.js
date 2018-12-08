@@ -1,42 +1,45 @@
 class AutorView {
-    constructor(selForm, selTabela, selInformacao){
+    constructor(selForm, selBox, selInformacao){
         this.seletorFormulario = selForm;
-        this.seletorTabela = selTabela;
+        this.seletorBox = selBox;
         this.seletorInformacao = selInformacao;
     }
 
-    montaTabela(autores){
-        var tabela = document.querySelector(this.seletorTabela);
-        tabela.innerHTML = this.templateTabela(autores);
+    montaBoxs(autores){
+        var box = document.querySelector(this.seletorBox);
+        box.innerHTML = this.templateBoxs(autores);
     }
 
     informacaoAutor(autor){
-        var informacao = document.querySelector(this.selInformacao);
+        var informacao = document.querySelector(this.seletorInformacao);
         informacao.innerHTML = this.templateInformacao(autor);
     }
 
-    templateTabela(autores){
-        return `<table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>País</th>
-                        <th>Ver informações</th>
-                        <th></th>
-                    </tr>
-                    ${autores.map(autor =>
-                        `<tr>                        
-                            <td>${autor.nome}</td>
-                            <td>${autor.pais}</td>
-                            <td>
-                                <a href="/HTML/autor/informacoes.html">
-                                    <button id="/autores/${autor.id_autor}" type="submit">
-                                        Ver
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                    `).join('')}
-                </table>`
+    templateBoxs(autores){
+        return  `<div class="section">
+                    <div class="columns is-multiline is-lefty">
+                        ${autores.map(autor =>
+                            `<div class="column is-4">
+                                <div class="box">
+                                    <ul>
+                                        <label class="tag is-success is-info is-large"> ${autor.nome} </label>
+                                    </ul>
+                                    <hr>
+                                    <form id="verInformacao" action="/HTML/autor/informacoes.html">
+                                        <input id="id_autor" value="${autor.id_autor}" type="hidden">
+                                        <input id="txtnome" value="${autor.nome}" type="hidden">
+                                        <input id="txtpais" value="${autor.pais}" type="hidden">
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <button type="submit" class="button is-info"> Ver Informações </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>`
     }
 
     templateInformacao(autor){
@@ -52,3 +55,5 @@ class AutorView {
                 </table>`
     }
 }
+
+// action="/HTML/autor/informacoes.html"

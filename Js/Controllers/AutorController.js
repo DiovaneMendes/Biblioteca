@@ -1,7 +1,7 @@
 class AutorController{
     constructor(){
         this.service = new AutorHTTPService();
-        this.view = new AutorView("#form", "#tabela", "#id");
+        this.view = new AutorView("#form", "#boxs", "#verInformacao");
     }
 
     salvarAutor(event){
@@ -32,8 +32,8 @@ class AutorController{
     carregarAutores(event){
         const self = this;
         const ok = function(autores){
-            console.log("Carrega Tabela");
-            self.view.montaTabela(autores);
+            console.log("Carrega Boxs");
+            self.view.montaBoxs(autores);
         }
 
         const erro = function(status){
@@ -61,8 +61,16 @@ class AutorController{
     }
 
     carregarAutor(event){
-        let id = document.querySelector("#id").value;
+        event.preventDefault();
         const self = this;
+
+        const autor = new Autor();
+        autor.id_autor = 1; //document.querySelector("#id_autor").value;
+        autor.nome = 'a'; //document.querySelector("#txtnome").value;
+        autor.pais = 'a'; //document.querySelector("#txtpais").value;
+
+        console.log("---> "+autor.id_autor);      
+        
         const ok = function(autor){
             console.log("Carrega Informação");
             self.view.informacaoAutor(autor);
@@ -72,6 +80,6 @@ class AutorController{
             console.log("Error: " + status);            
         }
         
-        this.service.carregarAutor(id, ok, erro);
+        this.service.carregarAutor(autor.id_autor, ok, erro);
     }
 }
