@@ -1,7 +1,7 @@
 class AutorController{
     constructor(){
         this.service = new AutorHTTPService();
-        this.view = new AutorView("#form", "#boxs", "#verInformacao");
+        this.view = new AutorView("#formulario", "#boxs", "#informacao");
     }
 
     salvarAutor(event){
@@ -15,6 +15,7 @@ class AutorController{
         const ok = function(){
             self.limparFormulario();
             self.carregarAutores();
+            self.carregarAutor();
         }
 
         const erro = function(status){
@@ -61,13 +62,12 @@ class AutorController{
     }
 
     carregarAutor(event){
-        event.preventDefault();
         const self = this;
 
         const autor = new Autor();
-        autor.id_autor = 1; //document.querySelector("#id_autor").value;
-        autor.nome = 'a'; //document.querySelector("#txtnome").value;
-        autor.pais = 'a'; //document.querySelector("#txtpais").value;
+        autor.id_autor = document.querySelector("#id_autor").value;
+        autor.nome = document.querySelector("#txtnome").value;
+        autor.pais = document.querySelector("#txtpais").value;
 
         console.log("---> "+autor.id_autor);      
         

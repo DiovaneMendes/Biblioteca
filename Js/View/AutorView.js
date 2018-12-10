@@ -16,29 +16,27 @@ class AutorView {
     }
 
     templateBoxs(autores){
-        return  `<div class="section">
-                    <div class="columns is-multiline is-lefty">
-                        ${autores.map(autor =>
-                            `<div class="column is-4">
-                                <div class="box">
-                                    <ul>
-                                        <label class="tag is-success is-info is-large"> ${autor.nome} </label>
-                                    </ul>
-                                    <hr>
-                                    <form id="verInformacao" action="/HTML/autor/informacoes.html">
-                                        <input id="id_autor" value="${autor.id_autor}" type="hidden">
-                                        <input id="txtnome" value="${autor.nome}" type="hidden">
-                                        <input id="txtpais" value="${autor.pais}" type="hidden">
-                                        <div class="field has-addons">
-                                            <div class="control">
-                                                <button type="submit" class="button is-info"> Ver Informações </button>
-                                            </div>
+        return  `<div class="columns is-multiline is-lefty">
+                    ${autores.map(autor =>
+                        `<div class="column is-3">
+                            <div class="box">
+                                <ul>
+                                    <label class="tag is-success is-info is-large"> ${autor.nome} </label>
+                                </ul>
+                                <hr>
+                                <form id="verInformacao" action="/HTML/autor/informacoes.html">
+                                    <input class="id_autor" value="${autor.id_autor}" type="hidden">
+                                    <input class="txtnome" value="${autor.nome}" type="hidden">
+                                    <input class="txtpais" value="${autor.pais}" type="hidden">
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <button type="submit" class="button is-info borda-arredondada"> Ver Informações </button>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form> 
                             </div>
-                        `).join('')}
-                    </div>
+                        </div>
+                    `).join('')}                    
                 </div>`
     }
 
@@ -55,5 +53,3 @@ class AutorView {
                 </table>`
     }
 }
-
-// action="/HTML/autor/informacoes.html"

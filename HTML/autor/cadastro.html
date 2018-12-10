@@ -5,27 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <link rel="stylesheet" href="/CSS/style.css">
     <title>Formulário</title>
 </head>
 <body>
     <main>
-        <h1>Cadastro Autor</h1>
-        <form id="formulario">
-            <label for="txtnome">Nome:</label>
-            <input type="text" id="txtnome">
-            <br/>
-            <br/>
-            <label for="txtpais">País:</label>
-            <input type="text" id="txtpais">
-            <br/>
-            <br/>
-            <input type="submit" id="botaosalvar" value="Salvar">
-            <input type="reset" value="Cancelar">
-            <br/>
-        </form>
+        <div class="altura">
+            <h1 class="title is-4 v center has-text-centered"> Cadastro Autor </h1>
+        </div>
+        <div class="container">                
+            <div class="columns is-mobile card-content">
+                <form id="formulario">
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span for="txtnome">Nome:</span>
+                                <input class="input input-fancy" type="text" id="txtnome"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span for="txtpais">País:</span>
+                                <input class="input input-fancy" type="text" id="txtpais"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <div class="center has-text-centered">
+                                    <button type="submit" class="button" value="Salvar">
+                                            <span>Salvar</span>                        
+                                    </button>
+                                    <button type="submit" class="button" value="Cancelar">
+                                            <span>Cancelar</span>                        
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+
+            <hr>
+            
+            <h1 class="title is-4 v center has-text-centered"> Autores </h1>
+            <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <div id="boxs"></div>             
+                    </div>
+                </div>
+            </div> 
+        </div>
         
-        <h2>Tabela de Autores</h2>
-        <div id="boxs"></div>
+        
     </main>
     <script src="/Js/Entidades/Autor.js"></script>
     <script src="/Js/Services/AutorHTTPService.js"></script>
