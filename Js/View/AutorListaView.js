@@ -5,7 +5,7 @@ class AutorListaView{
     }
 
     montarBoxs(autores){
-        var boxs = 
+        var html = 
         `<div class="altura center has-text-centered">
             <a href="/HTML/autor/cadastro.html"> Voltar para o cadastro</a>        
             <h1 class="title is-4 v center has-text-centered"> Autores </h1>
@@ -21,7 +21,7 @@ class AutorListaView{
                                     <label class="tag is-success is-info is-large"> ${autor.nome} </label>
                                 </ul>
                                 <hr>
-                                <input class="id_autor" value="${autor.id_autor}" type="hidden">
+                                <input class="idAutor" value="${autor.id_autor}" type="hidden">
                                 <input class="nomeAutor" value="${autor.nome}" type="hidden">
                                 <input class="pais" value="${autor.pais}" type="hidden">
                                 <div class="field has-addons">
@@ -41,20 +41,20 @@ class AutorListaView{
             </div>
         </div>`
 
-        this.boxsAutores.innerHTML = boxs;
+        this.boxsAutores.innerHTML = html;
 
         const linksEditar = document.querySelectorAll(".editar");
         for(var linkEditar of linksEditar){
             const id = linkEditar.parentNode.parentNode.id;
-            console.log(id);
+            console.log('A: '+id);
             
-            linkEditar.addEventListener("click",this.controller.carregaFormularioComAutor.bind(id, this.controller));
+            linkEditar.addEventListener("click", this.controller.carregaFormularioComAutor.bind(id, this.controller));
         }
 
         const linksExcluir = document.querySelectorAll(".excluir");
         for(var linkExcluir of linksExcluir){
             const id = linkExcluir.parentNode.parentNode.id;
-            linkExcluir.addEventListener("click",this.controller.excluirAutor.bind(this.controller, id));
+            linkExcluir.addEventListener("click", this.controller.excluirAutor.bind(id, this.controller));
         }
     }
 }

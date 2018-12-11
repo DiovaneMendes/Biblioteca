@@ -12,18 +12,19 @@ class AutorController{
     }
 
     carregaFormularioComAutor(id, event){
-        event.preventDefault();             
+        event.preventDefault();            
         
         const self = this;
-        this.service.carregarAutor(id, 
-            function(autor){
-                self.editaAutor.montarEditar(autor);
-                location.href="/HTML/autor/edita.html";
+
+        this.service.carregarAutor(id,
+            function (autor){
+                self.editaAutor.montarEditar(autor);        
+                location.href = "/HTML/autor/edita.html"; 
             },
             function(status){
                 console.log(status);
-            }
-        );   
+            }  
+        ); 
     }
 
     salvarAutor(event){
@@ -33,7 +34,8 @@ class AutorController{
         
         const self = this;
 
-        this.service.enviarAutor(autor, function (){
+        this.service.enviarAutor(autor,
+            function (){
                 self.formAutor.limparFormulario();
                 location.href = "/HTML/autor/listaAutores.html";
             },
@@ -78,10 +80,12 @@ class AutorController{
         const self = this;
 
         this.service.excluirAutor(id, 
-            () => {
+            function (){
                 self.carregarAutores();
             },
-            (status) => console.log(status)
+            function(status){
+                console.log(status)
+            }
         );
     }
 }
