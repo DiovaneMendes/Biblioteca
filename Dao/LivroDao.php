@@ -5,11 +5,12 @@
 
     class LivroDAO{
         public function inserir(Livro $livro){
-            $qInserir = "INSERT INTO livros(isbn,nome,editora,ano) VALUES (:isbn,:nome,:editora,:ano)";            
+            $qInserir = "INSERT INTO livros(isbn,nome,autor,editora,ano) VALUES (:isbn,:nome,:autor,:editora,:ano)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":isbn",$livro->isbn);
             $comando->bindParam(":nome",$livro->nome);
+            $comando->bindParam(":autor",$livro->autor);
             $comando->bindParam(":editora",$livro->editora);
             $comando->bindParam(":ano",$livro->ano);
             $comando->execute();
