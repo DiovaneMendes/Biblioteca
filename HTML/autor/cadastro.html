@@ -9,65 +9,12 @@
     <title>Formulário</title>
 </head>
 <body>
-    <main>
-        <div class="altura">
-            <h1 class="title is-4 v center has-text-centered"> Cadastro Autor </h1>
-        </div>
-        <div class="container">                
-            <div class="columns is-mobile card-content">
-                <form id="formulario">
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span for="txtnome">Nome:</span>
-                                <input class="input input-fancy" type="text" id="txtnome"/>
-                            </div>
-                        </div>
-                    </div>
+    <main></main>
 
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span for="txtpais">País:</span>
-                                <input class="input input-fancy" type="text" id="txtpais"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <div class="center has-text-centered">
-                                    <button type="submit" class="button" value="Salvar">
-                                            <span>Salvar</span>                        
-                                    </button>
-                                    <button type="submit" class="button" value="Cancelar">
-                                            <span>Cancelar</span>                        
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form> 
-            </div>
-
-            <hr>
-            
-            <h1 class="title is-4 v center has-text-centered"> Autores </h1>
-            <div class="column">
-                <div class="field">
-                    <div class="control">
-                        <div id="boxs"></div>             
-                    </div>
-                </div>
-            </div> 
-        </div>
-        
-        
-    </main>
     <script src="/Js/Entidades/Autor.js"></script>
     <script src="/Js/Services/AutorHTTPService.js"></script>
-    <script src="/Js/View/AutorView.js"></script>
+    <script src="/Js/View/AutorCadastroView.js"></script>
+    <script src="/Js/View/AutorListaView.js"></script>
     <script src="/Js/Controllers/AutorController.js"></script>
     <script src="/Js/app.js"></script>    
 </body>
