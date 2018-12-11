@@ -1,0 +1,23 @@
+
+body {
+    background-color: rgb(196, 150, 108);
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    align-items: center;
+    text-decoration-color: rgba(222, 222, 222, 1);
+    margin-right: 15px;
+}
+
+.altura {
+    padding-top: 30px;
+}
+
+.borda-arredondada{
+    border-radius: 5px;
+}

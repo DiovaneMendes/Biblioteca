@@ -10,28 +10,28 @@
 
     $app = new \Slim\App;
 
-    $app->group('/clientes', function(){
+    $app->group('/clientes/', function(){
         $this->get('', 'ClienteController:listar');    
         $this->post('', 'ClienteController:inserir');
-        $this->get('/{id:[0-9]+}', 'ClienteController:buscarPorId');
-        $this->put('/{id:[0-9]+}', 'ClienteController:atualizar');    
-        $this->delete('/{id:[0-9]+}', 'ClienteController:deletar');
+        $this->get('{id:[0-9]+}', 'ClienteController:buscarPorId');
+        $this->put('{id:[0-9]+}', 'ClienteController:atualizar');    
+        $this->delete('{id:[0-9]+}', 'ClienteController:deletar');
     });
 
-    $app->group('/autores', function(){
+    $app->group('/autores/', function(){
         $this->get('', 'AutorController:listar');    
         $this->post('', 'AutorController:inserir');
-        $this->get('/{id:[0-9]+}', 'AutorController:buscarPorId');
-        $this->put('/{id:[0-9]+}', 'AutorController:atualizar');    
-        $this->delete('/{id:[0-9]+}', 'AutorController:deletar');
+        $this->get('{id:[0-9]+}', 'AutorController:buscarPorId');
+        $this->put('{id:[0-9]+}', 'AutorController:atualizar');    
+        $this->delete('{id:[0-9]+}', 'AutorController:deletar');
     });
 
-    $app->group('/livros', function(){
+    $app->group('/livros/', function(){
         $this->get('', 'LivroController:listar');    
         $this->post('', 'LivroController:inserir');
-        $this->get('/{id:[0-9]+}', 'LivroController:buscarPorId');
-        $this->put('/{id:[0-9]+}', 'LivroController:atualizar');    
-        $this->delete('/{id:[0-9]+}', 'LivroController:deletar');
+        $this->get('{id:[0-9]+}', 'LivroController:buscarPorId');
+        $this->put('{id:[0-9]+}', 'LivroController:atualizar');    
+        $this->delete('{id:[0-9]+}', 'LivroController:deletar');
 
         $this->get('/a', 'LivroController:buscarAutores');
     });

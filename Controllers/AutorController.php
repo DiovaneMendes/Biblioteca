@@ -3,12 +3,12 @@
     include_once './Dao/AutorDao.php';
     
     class AutorController{
-        public function listar($request, $response){
+        public function listar($request, $response, $args){
             $dao = new AutorDao;    
             $array_autores = $dao->listar();        
             
             $response = $response->withJson($array_autores);
-            $response = $response->withHeader('Content-type', 'application/json');    
+            $response = $response->withHeader('Content-type', 'application/json');
             return $response;
         }
 
