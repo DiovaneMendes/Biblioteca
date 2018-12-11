@@ -1,6 +1,6 @@
 class AutorHTTPService{
     constructor(){
-        this.uri = "http://localhost:8080/autores";
+        this.uri = "http://localhost:8080/autores/";
     }
 
     enviarAutor(autor, ok, error){
@@ -49,7 +49,7 @@ class AutorHTTPService{
 
         console.log(this.uri+id);
 
-        xhttp.open("DELETE", this.uri + "/" + id, true);
+        xhttp.open("DELETE", this.uri + id, true);
         xhttp.send();
     }
 
@@ -64,7 +64,7 @@ class AutorHTTPService{
                 error(this.status);
             }
         };
-        xhttp.open("GET", this.uri + "/" + id, true);
+        xhttp.open("GET", this.uri + id, true);
         xhttp.send();
     }
 
@@ -79,7 +79,7 @@ class AutorHTTPService{
                 error(this.status);
             }
         };
-        xhttp.open("PUT", this.uri + "/" + id, true);
+        xhttp.open("PUT", this.uri + id, true);
         xhttp.setRequestHeader("Content-Type","application/json")
         xhttp.send(JSON.stringify(autor));
     }

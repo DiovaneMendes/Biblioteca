@@ -45,16 +45,16 @@ class AutorListaView{
 
         const linksEditar = document.querySelectorAll(".editar");
         for(var linkEditar of linksEditar){
-            const id = linkEditar.parentNode.parentNode.id;
+            const id = linkEditar.parentNode.parentNode.parentNode.id;
             console.log('A: '+id);
             
-            linkEditar.addEventListener("click", this.controller.carregaFormularioComAutor.bind(id, this.controller));
+            linkEditar.addEventListener("click", this.controller.carregaFormularioComAutor.bind(this.controller, id));
         }
 
         const linksExcluir = document.querySelectorAll(".excluir");
         for(var linkExcluir of linksExcluir){
-            const id = linkExcluir.parentNode.parentNode.id;
-            linkExcluir.addEventListener("click", this.controller.excluirAutor.bind(id, this.controller));
+            const id = linkExcluir.parentNode.parentNode.parentNode.id;
+            linkExcluir.addEventListener("click", this.controller.excluirAutor.bind(this.controller, id));
         }
     }
 }

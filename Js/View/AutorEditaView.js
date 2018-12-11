@@ -38,11 +38,11 @@ class AutorEditaView {
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <div class="center has-text-centered">
-                                    <button type="submit" class="button" value="Salvar">
-                                            <span>Salvar</span>                        
+                                <div class="center has-text-centered"> 
+                                    <button type="submit" class="button" value="Salvar" onClick="location.href='/HTML/autor/listaAutores.html'">
+                                        <span>Salvar</span>                        
                                     </button>
-                                    <button id="botaoCancelar" type="button" class="button" value="Cancelar" onClick="location.href='/HTML/autor/listaAutores.html'">
+                                    <button type="button" class="button" value="Cancelar" onClick="location.href='/HTML/autor/listaAutores.html'">
                                             <span>Cancelar</span>                        
                                     </button>
                                 </div>

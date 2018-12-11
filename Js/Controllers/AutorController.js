@@ -11,15 +11,13 @@ class AutorController{
         this.formAutor.montarForm();
     }
 
-    carregaFormularioComAutor(id, event){
-        event.preventDefault();            
-        
+    carregaFormularioComAutor(id,event){
+        event.preventDefault();
         const self = this;
-
+        console.log(this);
         this.service.carregarAutor(id,
-            function (autor){
-                self.editaAutor.montarEditar(autor);        
-                location.href = "/HTML/autor/edita.html"; 
+            function (autor){        
+                self.editaAutor.montarEditar(autor);
             },
             function(status){
                 console.log(status);
@@ -55,7 +53,7 @@ class AutorController{
         this.service.atualizarAutor(id, autor, 
             function(){
                 self.formAutor.limparFormulario();
-                location.href = "/HTML/autor/listaAutores.html";
+                location.href = "/HTML/autor/cadastro.html";
             },
             function(status){
                 console.log(status)
