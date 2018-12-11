@@ -43,19 +43,16 @@ class AutorListaView{
 
         this.boxsAutores.innerHTML = boxs;
 
-        const linkNovo = document.querySelector("#novo");
-        linkNovo.addEventListener("click", this.controller.carregaFormulario.bind(this.controller));
-
         const linksEditar = document.querySelectorAll(".editar");
-        for(var linkEditar of linksEditar)
-        {
+        for(var linkEditar of linksEditar){
             const id = linkEditar.parentNode.parentNode.id;
-            linkEditar.addEventListener("click",this.controller.carregaFormularioComAutor.bind(this.controller, id));
+            console.log(id);
+            
+            linkEditar.addEventListener("click",this.controller.carregaFormularioComAutor.bind(id, this.controller));
         }
 
         const linksExcluir = document.querySelectorAll(".excluir");
-        for(var linkExcluir of linksExcluir)
-        {
+        for(var linkExcluir of linksExcluir){
             const id = linkExcluir.parentNode.parentNode.id;
             linkExcluir.addEventListener("click",this.controller.excluirAutor.bind(this.controller, id));
         }

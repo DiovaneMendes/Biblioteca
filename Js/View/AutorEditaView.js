@@ -1,17 +1,17 @@
-class AutorCadastroView {
+class AutorEditaView {
     constructor(controller, seletor){
         this.controller = controller;
-        this.formAutor = document.querySelector(seletor);
+        this.editaAutor = document.querySelector(seletor);
     }
 
-    montarForm(autor){
+    montarEditar(autor){
         if(!autor){
             autor = new Autor();
         }
 
         var html = `
         <div class="altura">
-            <h1 class="title is-4 v center has-text-centered"> Cadastro Autor </h1>
+            <h1 class="title is-4 v center has-text-centered"> Editar Autor </h1>
         </div> 
         <div class="container">                
             <div class="columns is-mobile card-content">
@@ -53,21 +53,10 @@ class AutorCadastroView {
             </div>
         </div>`;
 
-        this.formAutor.innerHTML = html;        
+        this.editaAutor.innerHTML = html;        
 
         var elementoForm = document.querySelector("form");
-        if(!autor.id_autor){
-            elementoForm.addEventListener("submit", this.controller.salvarAutor.bind(this.controller));
-        }
-        else {
-            elementoForm.addEventListener("submit", this.controller.editarAutor.bind(autor.id_autor, this.controller));
-        }
-    }
-
-    limparFormulario(){
-        document.querySelector("#idAutor").value="";
-        document.querySelector("#nomeAutor").value="";
-        document.querySelector("#pais").value="";
+        elementoForm.addEventListener("submit", this.controller.editarAutor.bind(this.controller, autor.id_autor));    
     }
 
     getDataAutor(){

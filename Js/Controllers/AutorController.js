@@ -1,28 +1,29 @@
 class AutorController{
     constructor(){
         this.service = new AutorHTTPService();
-        this.boxsAutores = new AutorListaView(this, "main"); 
-        this.formAutor = new AutorCadastroView(this, "main");       
+        this.formAutor = new AutorCadastroView(this, "main"); 
+        this.boxsAutores = new AutorListaView(this, "main");
+        this.editaAutor = new AutorEditaView(this, "main");                
     }
 
     carregaFormulario(event){
         event.preventDefault();
-        console.log(JSON.stringify(event));
-        this.formAutor.montarForm();              
+        this.formAutor.montarForm();
     }
 
     carregaFormularioComAutor(id, event){
         event.preventDefault();             
         
         const self = this;
-        const ok = function(autor){
-            self.formAutor.montarForm(autor);
-        }
-        const erro = function(status){
-            console.log(status);
-        }
-
-        this.service.buscarAutor(id, ok, erro);   
+        this.service.carregarAutor(id, 
+            function(autor){
+                self.editaAutor.montarEditar(autor);
+                location.href="/HTML/autor/edita.html";
+            },
+            function(status){
+                console.log(status);
+            }
+        );   
     }
 
     salvarAutor(event){
@@ -34,7 +35,7 @@ class AutorController{
 
         this.service.enviarAutor(autor, function (){
                 self.formAutor.limparFormulario();
-                self.carregarAutores();
+                location.href = "/HTML/autor/listaAutores.html";
             },
             function (status){
                 console.log(status)
@@ -45,29 +46,30 @@ class AutorController{
     editarAutor(id, event){
         event.preventDefault();
     
-        var autores = this.formAutor.getDataAutor();
+        var autor = this.editaAutor.getDataAutor();
         
         const self = this;
 
-        this.service.atualizarAutores(id, autores, 
-            () => {
+        this.service.atualizarAutor(id, autor, 
+            function(){
                 self.formAutor.limparFormulario();
-                self.carregarAutores();
+                location.href = "/HTML/autor/listaAutores.html";
             },
-            (status) => console.log(status)
+            function(status){
+                console.log(status)
+            }
         );
     }
 
     carregarAutores(event){   
         const self = this;
-        const ok = function(listaAutores){
-            self.boxsAutores.montarBoxs(listaAutores);              
-        }
-        const erro = function(status){
-            console.log(status);
-        }
-
-        this.service.carregarAutores(ok, erro);
+        this.service.carregarAutores(function(listaAutores){
+                self.boxsAutores.montarBoxs(listaAutores);              
+            },
+            function(status){
+                console.log(status);
+            }
+        );
     }
 
     excluirAutor(id, event){
